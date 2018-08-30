@@ -12,6 +12,7 @@ import android.graphics.PorterDuffXfermode;
 import android.support.annotation.ColorRes;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -48,6 +49,16 @@ class SpotlightView extends FrameLayout {
                 if (animator != null && !animator.isRunning() && (float) animator.getAnimatedValue() > 0) {
                     if (listener != null) listener.onTargetClicked();
                 }
+            }
+        });
+        setOnTouchListener(new OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (currentTarget.getCastedView() != null) {
+                    currentTarget.getCastedView().dispatchTouchEvent(event);
+                }
+
+                return false;
             }
         });
     }

@@ -25,6 +25,21 @@ public class  MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        View one = findViewById(R.id.one);
+        one.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
+        one.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast.makeText(MainActivity.this, "long clicked", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        });
+
         findViewById(R.id.simple_target).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -40,6 +55,7 @@ public class  MainActivity extends AppCompatActivity {
                         .setTitle("first title")
                         .setDescription("first description")
                         .build();
+                firstTarget.setCastedView(one);
 
                 View two = findViewById(R.id.two);
                 int[] twoLocation = new int[2];
