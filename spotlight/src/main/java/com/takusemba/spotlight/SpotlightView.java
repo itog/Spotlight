@@ -43,21 +43,12 @@ class SpotlightView extends FrameLayout {
         setLayerType(View.LAYER_TYPE_HARDWARE, null);
         spotPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
         setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-        setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (animator != null && !animator.isRunning() && (float) animator.getAnimatedValue() > 0) {
-                    if (listener != null) listener.onTargetClicked();
-                }
-            }
-        });
         setOnTouchListener(new OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (currentTarget.getCastedView() != null) {
-                    currentTarget.getCastedView().dispatchTouchEvent(event);
+                if (animator != null && !animator.isRunning() && (float) animator.getAnimatedValue() > 0) {
+                    if (listener != null) listener.onTargetClicked();
                 }
-
                 return false;
             }
         });

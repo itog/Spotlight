@@ -3,7 +3,9 @@ package com.takusemba.spotlightsample;
 import android.graphics.PointF;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Toast;
@@ -32,10 +34,10 @@ public class  MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "clicked", Toast.LENGTH_SHORT).show();
             }
         });
-        one.setOnLongClickListener(new View.OnLongClickListener() {
+        one.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public boolean onLongClick(View v) {
-                Toast.makeText(MainActivity.this, "long clicked", Toast.LENGTH_SHORT).show();
+            public boolean onTouch(View v, MotionEvent event) {
+                Log.v("Hoge", "onTouch");
                 return false;
             }
         });
