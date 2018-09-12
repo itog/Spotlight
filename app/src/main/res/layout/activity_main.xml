@@ -3,10 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/main_root"
     android:background="@color/colorPrimary">
 
-    <Button
+    <TextView
         android:id="@+id/one"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

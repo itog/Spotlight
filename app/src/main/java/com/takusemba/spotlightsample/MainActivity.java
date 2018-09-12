@@ -1,5 +1,6 @@
 package com.takusemba.spotlightsample;
 
+import android.annotation.SuppressLint;
 import android.graphics.PointF;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -21,23 +22,34 @@ import com.takusemba.spotlight.target.Target;
 import java.util.ArrayList;
 
 public class  MainActivity extends AppCompatActivity {
+    private static final String TAG = "Spotlight Sample";
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        View one = findViewById(R.id.one);
-        one.setOnClickListener(new View.OnClickListener() {
+        View three = findViewById(R.id.three);
+        three.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(MainActivity.this, "clicked", Toast.LENGTH_SHORT).show();
             }
         });
-        one.setOnTouchListener(new View.OnTouchListener() {
+
+        three.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast.makeText(MainActivity.this, "long clicked", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        });
+
+        three.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                Log.v("Hoge", "onTouch");
+                Log.v(TAG, "onTouch()");
                 return false;
             }
         });
@@ -57,7 +69,6 @@ public class  MainActivity extends AppCompatActivity {
                         .setTitle("first title")
                         .setDescription("first description")
                         .build();
-                firstTarget.setCastedView(one);
 
                 View two = findViewById(R.id.two);
                 int[] twoLocation = new int[2];

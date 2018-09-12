@@ -21,14 +21,6 @@ public abstract class Target {
     private long duration;
     private TimeInterpolator animation;
     private OnTargetStateChangedListener listener;
-    private View castedView;
-
-    public void setCastedView(View view) {
-        castedView = view;
-    }
-    public View getCastedView() {
-        return castedView;
-    }
 
     public Target(Shape shape, PointF point, View overlay, long duration, TimeInterpolator animation, OnTargetStateChangedListener listener) {
         this.shape = shape;
